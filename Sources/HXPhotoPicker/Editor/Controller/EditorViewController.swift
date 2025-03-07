@@ -221,14 +221,18 @@ open class EditorViewController: HXBaseViewController {
         cancelButton.addTarget(self, action: #selector(didCancelButtonClick(button:)), for: .touchUpInside)
         
         finishButton = UIButton(type: .custom)
-        finishButton.setTitle(.textManager.editor.tools.finishTitle.text, for: .normal)
-        finishButton.setTitleColor(config.finishButtonTitleNormalColor, for: .normal)
-        finishButton.setTitleColor(config.finishButtonTitleNormalColor.withAlphaComponent(0.5), for: .highlighted)
-        finishButton.setTitleColor(config.finishButtonTitleDisableColor.withAlphaComponent(0.5), for: .disabled)
+        finishButton.setTitle("Upload", for: .normal)
+        finishButton.setTitleColor(.white, for: .normal)
+        finishButton.setTitleColor(.white.withAlphaComponent(0.7), for: .highlighted)
+        finishButton.setTitleColor(.white.withAlphaComponent(0.5), for: .disabled)
         finishButton.titleLabel?.font = .textManager.editor.tools.finishTitleFont
-        finishButton.contentHorizontalAlignment = .right
+        finishButton.backgroundColor = .systemGreen
+        finishButton.layer.cornerRadius = 12
+        finishButton.clipsToBounds = true
+        finishButton.contentHorizontalAlignment = .center
         finishButton.addTarget(self, action: #selector(didFinishButtonClick(button:)), for: .touchUpInside)
         finishButton.isEnabled = !config.isWhetherFinishButtonDisabledInUneditedState
+        finishButton.sizeToFit()
         
         resetButton = UIButton(type: .custom)
         resetButton.setTitle(.textManager.editor.tools.resetTitle.text, for: .normal)
